@@ -1,0 +1,297 @@
+\usepackage{verbatim,color,amssymb,bbm,epsfig}
+\usepackage{fancyhdr}
+\usepackage[authoryear, sort]{natbib}
+\usepackage{graphicx}
+\usepackage{float}
+ 
+
+
+%\usepackage[inline]{showlabels}
+
+%\newcommand{\ind}{\mathbbm{1}}
+%$\ind$
+
+
+
+\newtheorem{Thm}{\underline{\bf Theorem}}
+\newtheorem{Assume}{\underline{\bf Assumptions}}
+\newtheorem{Mth}{Main Theorem}
+\newtheorem{Def}{Definition}
+\newtheorem{Rem}{\underline{\bf Remark}}
+\newtheorem{Qes}{Question}
+\newtheorem{proposition}{Proposition}
+\newtheorem{Lem}{\underline{\bf Lemma}}
+\newtheorem{Cor}{\underline{\bf Corollary}}
+\newtheorem{Exa}{Example}
+\newtheorem{Eq}{Equation}
+\newtheorem{Alg}{Algorithm}
+\def\rest{\hbox{rest}}
+
+\newcommand{\MyProof}{\noindent\textbf{Proof. }}
+
+
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+\def\Supp{Supplementary Material}
+
+\def\L{{\cal L}}
+\def\B{\oldboldbeta}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern6pt  \vbox{\kern6pt#1\kern6pt}\kern6pt\vrule}\hrule}}
+\def\rjccomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- RJC\vskip 2mm}}\vskip 2mm}
+\def\DRcomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- DR\vskip 2mm}}\vskip 2mm}
+
+\def\EKcomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- Eli\vskip 2mm}}\vskip 2mm}
+
+\def\wt{\widetilde}
+\def\sumi{\hbox{$\sum_{i=1}^n$}}
+\def\sumj{\hbox{$\sum_{j=1}^J$}}
+\def\sumk{\hbox{$\sum_{k=1}^K$}}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\BIOK{{\it Biometrika}}
+\def\whT{\widehat{\Theta}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\TECH{{\it Technometrics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\JABES{{\it Journal of Agricultural, Biological and
+                      Environmental Statistics}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\TECH{{\it Technometrics}}
+\def\BIOK{{\it Bio\-me\-tri\-ka}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\whT{\widehat{\Theta}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\TECH{{\it Technometrics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\bse{\begin{eqnarray*}}
+\def\ese{\end{eqnarray*}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\b1e{{\mathbf e}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\B{{\mathbf B}}
+\def\C{{\mathbf C}}
+\def\bw{{\mathbf w}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\def\bW{\W}
+
+
+\def\bfa{{\bf a}}
+\def\bfA{{\bf A}}
+\def\bfb{{\bf b}}
+\def\bfB{{\bf B}}
+\def\bfc{{\bf c}}
+\def\bfC{{\bf C}}
+\def\bfd{{\bf d}}
+\def\bfD{{\bf D}}
+\def\bfe{{\bf e}}
+\def\bfE{{\bf E}}
+\def\bff{{\bf f}}
+\def\bfF{{\bf F}}
+\def\bfg{{\bf g}}
+\def\bfG{{\bf G}}
+\def\bfh{{\bf h}}
+\def\bfH{{\bf H}}
+\def\bfi{{\bf i}}
+\def\bfI{{\bf I}}
+\def\bfj{{\bf j}}
+\def\bfJ{{\bf J}}
+\def\bfk{{\bf k}}
+\def\bfK{{\bf K}}
+\def\bfl{{\bf l}}
+\def\bfL{{\bf L}}
+\def\bfm{{\bf m}}
+\def\bfM{{\bf M}}
+\def\bfn{{\bf n}}
+\def\bfN{{\bf N}}
+\def\bfo{{\bf o}}
+\def\bfO{{\bf O}}
+\def\bfp{{\bf p}}
+\def\bfP{{\bf P}}
+\def\bfq{{\bf q}}
+\def\bfQ{{\bf Q}}
+\def\bfr{{\bf r}}
+\def\bfR{{\bf R}}
+\def\bfs{{\bf s}}
+\def\bfS{{\bf S}}
+\def\bft{{\bf t}}
+\def\bfT{{\bf T}}
+\def\bfu{{\bf u}}
+\def\bfU{{\bf U}}
+\def\bfv{{\bf v}}
+\def\bfV{{\bf V}}
+\def\bfw{{\bf w}}
+\def\bfW{{\bf W}}
+\def\bfx{{\bf x}}
+\def\bfX{{\bf X}}
+\def\bfy{{\bf y}}
+\def\bfY{{\bf Y}}
+\def\bfz{{\bf z}}
+\def\bfZ{{\bf Z}}
+\def\boldalpha{\boldmath\alpha}
+\def\boldAlpha{\boldmath\Alpha}
+\def\boldbeta{\boldmath\beta}
+\def\boldBeta{\boldmath\beta}
+\def\bolddelta{\boldmath\delta}
+\def\boldDelta{\boldmath\Delta}
+\def\boldeta{\boldmath\eta}
+\def\boldEta{\boldmath\Eta}
+\def\boldgamma{\boldmath\gamma}
+\def\boldGamma{\boldmath\Gamma}
+\def\boldlambda{\boldmath\lambda}
+\def\boldLambda{\boldmath\Lambda}
+\def\boldmu{\boldmath\mu}
+\def\boldMu{\boldmath\Mu}
+\def\boldnu{\boldmath\nu}
+\def\boldNu{\boldmath\Nu}
+\def\boldomega{\boldmath\omega}
+\def\boldOmega{\boldmath\Omega}
+\def\boldpsi{\boldmath\psi}
+\def\boldPsi{\boldmath\Psi}
+\def\boldsigma{\boldmath\sigma}
+\def\boldSigma{\boldmath\Sigma}
+\def\boldpi{\boldmath\pi}
+\def\boldPi{\boldmath\Pi}
+\def\boldphi{\boldmath\phi}
+\def\boldepsilon{\boldmath\epsilon}
+\def\boldtheta{\boldmath\theta}
+\def\boldTheta{\boldmath\Theta}
+\def\boldve{\boldmath\ve}
+\def\boldVe{\boldmath\Epsilon}
+\def\boldxi{\boldmath\xi}
+\def\boldXi{\boldmath\Omega}
+\def\boldzeta{\boldmath\zeta}
+\def\boldZeta{\boldmath\Zeta}
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\b1e{{\mathbf e}}
+\def\bB{{\mathbf B}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bp{{\mathbf p}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+\def\sumb{\hbox{$\sum_{b=1}^{B}$}}
+
+
+\def\colblue#1{\textcolor{blue}{#1}}
+\def\highlight#1{\underline{\textcolor{red}{#1}}}
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern6pt \vbox{\kern6pt \textcolor{blue}{#1}\kern6pt}\kern6pt\vrule}\hrule}}
+\def\rjccomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- RJC\vskip 2mm}}\vskip 2mm}
+\def\ascomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{blue}\bf#1} {\color{black}\bf -- Abhra\vskip 2mm}}\vskip 2mm}
+
+\def\authorfootnote#1{{\let\thefootnote\relax\footnotetext{#1}}}
+\def\scar{{\color{red}\bf {\tt scar}}}
+\def\K{{\cal K}}
+
+\setbeamercolor{alerted text}{fg=blue}
+\setbeamerfont{alerted text}{series=\bfseries}
