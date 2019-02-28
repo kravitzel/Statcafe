@@ -40,6 +40,46 @@
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 % Prevent slide breaks in the middle of a paragraph:
 \widowpenalties 1 10000
 \raggedbottom
@@ -448,8 +488,215 @@
 
 \end{frame}
 
-\begin{frame}{R Projects}
-\protect\hypertarget{r-projects}{}
+\begin{frame}{Storing Everything: Rprojects}
+\protect\hypertarget{storing-everything-rprojects}{}
+
+\begin{itemize}
+\item
+  I organize all my research projects the same way.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Show folder structure
+  \end{itemize}
+\item
+  Make the directory a Rproject.
+\item
+  R projects let you:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Divide your work naturally
+  \item
+    Store environments for every project
+  \item
+    “freeze” R in a state that works (advanced, won’t cover)
+  \end{itemize}
+\item
+  Integrates nicely other things we’ll cover
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Making an R project}
+\protect\hypertarget{making-an-r-project}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Go to File \(\rightarrow\) New Project
+\end{itemize}
+
+\begin{center}
+  \includegraphics[width=\textwidth,height= .90\textheight,keepaspectratio]{projects_new.png}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Making an R project}
+\protect\hypertarget{making-an-r-project-1}{}
+
+\begin{itemize}
+\item
+  Follow the prompts to make your project.
+\item
+  You’re done. Easy.
+\item
+  Now do this \alert{every time} you start a new research project.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Relative Filepaths and here()}
+\protect\hypertarget{relative-filepaths-and-here}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Does your R code start with this?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:\textbackslash{}Users\textbackslash{}Eli\textbackslash{}path}\CharTok{\textbackslash{}t}\StringTok{hat\textbackslash{}only\textbackslash{}I\textbackslash{}have"}\NormalTok{)}
+\NormalTok{mydata =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(data.csv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  This is \alert{bad}. As soon as you rename or move directories, it
+  breaks.
+\item
+  What if someone else wants to use your code? What if you want to use a
+  different computer?
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Relative Filepaths and here()}
+\protect\hypertarget{relative-filepaths-and-here-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Putting your files in an Rproject already helps. The directory is to
+  to where the .Rproj file is.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{getwd}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kravitze/Documents/SafeCafe/Code"
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Let’s do better with the here package.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Relative Filepaths and here()}
+\protect\hypertarget{relative-filepaths-and-here-2}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Here looks for a .Rproj file and makes file paths relative
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{here}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kravitze/Documents/SafeCafe"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{here}\NormalTok{(}\StringTok{"Inner_Directory"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "/Users/kravitze/Documents/SafeCafe/Inner_Directory"
+\end{verbatim}
+
+\begin{itemize}
+\item
+  Code won’t need to change between computers
+\item
+  Example: Load data
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my_data =}\StringTok{ }\KeywordTok{here}\NormalTok{(}\StringTok{"Data"}\NormalTok{, }\StringTok{"my_file.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}{Saving Progress with Github}
+\protect\hypertarget{saving-progress-with-github}{}
+
+\begin{itemize}
+\item
+  Now nothing is tied to the filepaths on our computer.
+\item
+  How can we \alert{back everything up} and
+  \alert{make it available on multiple computers}?
+\item
+  Github!
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Saving Progress with Github}
+\protect\hypertarget{saving-progress-with-github-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Setting up Github is simple, but many steps.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    See links at the end for instructions
+  \end{itemize}
+\item
+  I will go over what it can do for you, and why you should work with
+  it.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Saving Progress with Github}
+\protect\hypertarget{saving-progress-with-github-2}{}
+
+\begin{itemize}
+\item
+  Github let’s you track versions on your file
+\item
+  Github saves the history of your file
+\item
+  Made changes to your code \(\rightarrow\) you can
+  \alert{revert back to an earlier}. version.
+\item
+  Works with .tex too!
+\end{itemize}
 
 \end{frame}
 

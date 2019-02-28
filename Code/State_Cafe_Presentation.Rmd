@@ -13,6 +13,7 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library("here")
 ```
 
 ### Introduction
@@ -37,6 +38,107 @@ knitr::opts_chunk$set(echo = FALSE)
 * __Scenarios 3__: You decide to rewrite most of the paper, show it to your advisor, and they tell you it was better before.
   - You only have the old draft of the paper in PDF. You DO NOT want to retype it.
   
-### Rprojects
+### Storing Everything: Rprojects
 
-* I keep all my 
+* I organize all my research projects the same way.
+   - Show folder structure
+   
+* Make the directory a Rproject.
+
+* R projects let you:
+   - Divide your work naturally
+   - Store environments for every project
+   - "freeze" R in a state that works (advanced, won't cover)
+   
+* Integrates nicely other things we'll cover
+
+### Making an R project
+
+* Go to File $\rightarrow$ New Project
+
+\begin{center}
+  \includegraphics[width=\textwidth,height= .90\textheight,keepaspectratio]{projects_new.png}
+\end{center}
+
+### Making an R project
+
+* Follow the prompts to make your project.
+
+* You're done. Easy.
+
+* Now do this \alert{every time} you start a new research project.
+
+
+### Relative Filepaths and here()
+
+* Does your R code start with this?
+```{r eval=F, echo=T}
+setwd("C:\Users\Eli\path\that\only\I\have")
+mydata = read.csv(data.csv)
+```
+
+* This is \alert{bad}. As soon as you rename or move directories, it breaks.
+
+* What if someone else wants to use your code? What if you want to use a different computer? 
+
+### Relative Filepaths and here()
+
+* Putting your files in an Rproject already helps. The directory is to to where the .Rproj file is.
+
+```{r echo=T}
+getwd()
+```
+
+* Let's do better with the here package.
+
+### Relative Filepaths and here()
+
+* Here looks for a .Rproj file and makes file paths relative
+```{r echo=T}
+here()
+here("Inner_Directory")
+```
+* Code won't need to change between computers
+
+* Example: Load data
+```{r echo = TRUE, eval=FALSE}
+my_data = here("Data", "my_file.csv")
+```
+
+
+### Saving Progress with Github
+* Now nothing is tied to the filepaths on our computer.
+
+* How can we \alert{back everything up} and \alert{make it available on multiple computers}?
+
+* Github!
+
+### Saving Progress with Github
+
+* Setting up Github is simple, but many steps.
+  - See links at the end for instructions
+  
+* I will go over what it can do for you, and why you should work with it.
+
+### Saving Progress with Github
+
+* Github let's you track versions on your file
+
+* Github saves the history of your file
+
+* Made changes to your code $\rightarrow$ you can \alert{revert back to an earlier}. version.
+
+* Works with .tex too!
+
+* Show example on Github (code and .tex)
+
+### Saving Progress with Github
+
+* Github integrates really well with Rstudio
+   - Comes pre-installed on current version of Rstudio
+   
+* Point-and-click integration
+
+### Reproducable parallel: DoRNG
+
+
