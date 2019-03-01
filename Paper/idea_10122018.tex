@@ -1,0 +1,331 @@
+\documentclass[12pt]{article}
+\usepackage{verbatim,color,amssymb,epsfig}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[authoryear, sort]{natbib}
+
+\setlength{\textheight}{9in}
+\setlength{\textwidth}{6.5in}
+\setlength{\topmargin}{-36pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\tolerance=500
+\renewcommand{\baselinestretch}{1.5}
+
+
+\newcommand{\qed}{\hfill\hfill\vbox{\hrule\hbox{\vrule\squarebox
+			{.667em}\vrule}\hrule}\smallskip}
+\newtheorem{Thm}{\underline{\bf Theorem}}
+\newtheorem{Assume}{\underline{\bf Assumptions}}
+\newtheorem{Proof}{Proof}
+\newtheorem{Mth}{Main Theorem}
+\newtheorem{Def}{Definition}
+\newtheorem{Rem}{\underline{\bf Remark}}
+\newtheorem{Qes}{Question}
+\newtheorem{proposition}{Proposition}
+\newtheorem{Lem}{\underline{\bf Lemma}}
+\newtheorem{Cor}{\underline{\bf Corollary}}
+\newtheorem{Exa}{Example}
+\newtheorem{Eq}{Equation}
+\def\rest{\hbox{rest}}
+
+\newcommand{\MyProof}{\noindent\textbf{Proof. }}
+
+
+
+\def\nN{\mathbb{N}}
+\def\rR{\mathbb{R}}
+\def\eE{\mathbb{E}}
+
+
+\def\L{{\cal L}}
+\def\B{\oldboldbeta}
+\def\C{{\cal C}}
+\def\D{{\cal D}}
+\def\E{{\cal E}}
+\def\F{{\cal F}}
+\def\G{{\cal G}}
+\def\K{{\cal K}}
+
+\def\T{{\cal T}}
+\def\U{{\cal U}}
+\def\W{{\cal W}}
+\def\V{{\cal V}}
+\def\X{{\cal X}}
+\def\Z{{\cal Z}}
+\def\Y{{\cal Y}}
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern6pt  \vbox{\kern6pt#1\kern6pt}\kern6pt\vrule}\hrule}}
+\def\rjccomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- RJC\vskip 2mm}}\vskip 2mm}
+\def\wt{\widetilde}
+\def\sumi{\hbox{$\sum_{i=1}^n$}}
+\def\sumj{\hbox{$\sum_{j=1}^J$}}
+\def\sumk{\hbox{$\sum_{k=1}^K$}}
+\def\diag{\hbox{diag}}
+\def\wh{\widehat}
+\def\AIC{\hbox{AIC}}
+\def\BIC{\hbox{BIC}}
+\def\diag{\hbox{diag}}
+\def\log{\hbox{log}}
+\def\bias{\hbox{bias}}
+\def\Siuu{\boldSigma_{i,uu}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\BIOK{{\it Biometrika}}
+\def\whT{\widehat{\Theta}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\TECH{{\it Technometrics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\JCB{{\it Journal of Computational Biology}}
+\def\BIOINF{{\it Bioinformatics}}
+\def\JAMA{{\it Journal of the American Medical Association}}
+\def\JNUTR{{\it Journal of Nutrition}}
+\def\JCGS{{\it Journal of Computational and Graphical Statistics}}
+\def\LETTERS{{\it Letters in Probability and Statistics}}
+\def\JABES{{\it Journal of Agricultural, Biological and
+		Environmental Statistics}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\TECH{{\it Technometrics}}
+\def\BIOK{{\it Bio\-me\-tri\-ka}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Series A}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\SCAN{{\it Scandinavian Journal of Statistics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\ANNALS{{\it Annals of Statistics}}
+\def\whT{\widehat{\Theta}}
+\def\STATMED{{\it Statistics in Medicine}}
+\def\STATSCI{{\it Statistical Science}}
+\def\JSPI{{\it Journal of Statistical Planning \& Inference}}
+\def\JRSSB{{\it Journal of the Royal Statistical Society, Series B}}
+\def\BMCS{{\it Biometrics}}
+\def\COMMS{{\it Communications in Statistics, Theory \& Methods}}
+\def\JQT{{\it Journal of Quality Technology}}
+\def\STIM{{\it Statistics in Medicine}}
+\def\TECH{{\it Technometrics}}
+\def\AJE{{\it American Journal of Epidemiology}}
+\def\JASA{{\it Journal of the American Statistical Association}}
+\def\CDA{{\it Computational Statistics \& Data Analysis}}
+\def\dfrac#1#2{{\displaystyle{#1\over#2}}}
+\def\VS{{\vskip 3mm\noindent}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\naive{\hbox{naive}}
+\def\itemitem{\par\indent \hangindent2\parindent \textindent}
+\def\var{\hbox{var}}
+\def\cov{\hbox{cov}}
+\def\corr{\hbox{corr}}
+\def\trace{\hbox{trace}}
+\def\refhg{\hangindent=20pt\hangafter=1}
+\def\refmark{\par\vskip 2mm\noindent\refhg}
+\def\Normal{\hbox{Normal}}
+\def\povr{\buildrel p\over\longrightarrow}
+\def\ccdot{{\bullet}}
+\def\bse{\begin{eqnarray*}}
+	\def\ese{\end{eqnarray*}}
+\def\be{\begin{eqnarray}}
+\def\ee{\end{eqnarray}}
+\def\bq{\begin{equation}}
+\def\eq{\end{equation}}
+\def\bse{\begin{eqnarray*}}
+	\def\ese{\end{eqnarray*}}
+\def\pr{\hbox{pr}}
+\def\wh{\widehat}
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\b1e{{\mathbf e}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\B{{\mathbf B}}
+\def\C{{\mathbf C}}
+\def\bw{{\mathbf w}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+\newcommand{\etam}{\mbox{\boldmath $\eta$}}
+\newcommand{\bbeta}{\mbox{\boldmath $\beta$}}
+\newcommand{\bgamma}{\mbox{\boldmath $\gamma$}}
+\newcommand{\bzeta}{\mbox{\boldmath $\zeta$}}
+\newcommand{\bSigma}{\mbox{\boldmath $\Sigma$}}
+\newcommand{\balpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bomega}{\mbox{\boldmath $\omega$}}
+\def\bW{\W}
+
+
+\def\bfa{{\bf a}}
+\def\bfA{{\bf A}}
+\def\bfb{{\bf b}}
+\def\bfB{{\bf B}}
+\def\bfc{{\bf c}}
+\def\bfC{{\bf C}}
+\def\bfd{{\bf d}}
+\def\bfD{{\bf D}}
+\def\bfe{{\bf e}}
+\def\bfE{{\bf E}}
+\def\bff{{\bf f}}
+\def\bfF{{\bf F}}
+\def\bfg{{\bf g}}
+\def\bfG{{\bf G}}
+\def\bfh{{\bf h}}
+\def\bfH{{\bf H}}
+\def\bfi{{\bf i}}
+\def\bfI{{\bf I}}
+\def\bfj{{\bf j}}
+\def\bfJ{{\bf J}}
+\def\bfk{{\bf k}}
+\def\bfK{{\bf K}}
+\def\bfl{{\bf l}}
+\def\bfL{{\bf L}}
+\def\bfm{{\bf m}}
+\def\bfM{{\bf M}}
+\def\bfn{{\bf n}}
+\def\bfN{{\bf N}}
+\def\bfo{{\bf o}}
+\def\bfO{{\bf O}}
+\def\bfp{{\bf p}}
+\def\bfP{{\bf P}}
+\def\bfq{{\bf q}}
+\def\bfQ{{\bf Q}}
+\def\bfr{{\bf r}}
+\def\bfR{{\bf R}}
+\def\bfs{{\bf s}}
+\def\bfS{{\bf S}}
+\def\bft{{\bf t}}
+\def\bfT{{\bf T}}
+\def\bfu{{\bf u}}
+\def\bfU{{\bf U}}
+\def\bfv{{\bf v}}
+\def\bfV{{\bf V}}
+\def\bfw{{\bf w}}
+\def\bfW{{\bf W}}
+\def\bfx{{\bf x}}
+\def\bfX{{\bf X}}
+\def\bfy{{\bf y}}
+\def\bfY{{\bf Y}}
+\def\bfz{{\bf z}}
+\def\bfZ{{\bf Z}}
+\def\boldalpha{\boldmath\alpha}
+\def\boldAlpha{\boldmath\Alpha}
+\def\boldbeta{\boldmath\beta}
+\def\boldBeta{\boldmath\beta}
+\def\bolddelta{\boldmath\delta}
+\def\boldDelta{\boldmath\Delta}
+\def\boldeta{\boldmath\eta}
+\def\boldEta{\boldmath\Eta}
+\def\boldgamma{\boldmath\gamma}
+\def\boldGamma{\boldmath\Gamma}
+\def\boldlambda{\boldmath\lambda}
+\def\boldLambda{\boldmath\Lambda}
+\def\boldmu{\boldmath\mu}
+\def\boldMu{\boldmath\Mu}
+\def\boldnu{\boldmath\nu}
+\def\boldNu{\boldmath\Nu}
+\def\boldomega{\boldmath\omega}
+\def\boldOmega{\boldmath\Omega}
+\def\boldpsi{\boldmath\psi}
+\def\boldPsi{\boldmath\Psi}
+\def\boldsigma{\boldmath\sigma}
+\def\boldSigma{\boldmath\Sigma}
+\def\boldpi{\boldmath\pi}
+\def\boldPi{\boldmath\Pi}
+\def\boldphi{\boldmath\phi}
+\def\boldepsilon{\boldmath\epsilon}
+\def\boldtheta{\boldmath\theta}
+\def\boldTheta{\boldmath\Theta}
+\def\boldve{\boldmath\ve}
+\def\boldVe{\boldmath\Epsilon}
+\def\boldxi{\boldmath\xi}
+\def\boldXi{\boldmath\Omega}
+\def\boldzeta{\boldmath\zeta}
+\def\boldZeta{\boldmath\Zeta}
+\def\trans{^{\rm T}}
+\def\myalpha{{\cal A}}
+\def\th{^{th}}
+\def\b1e{{\mathbf e}}
+\def\bB{{\mathbf B}}
+\def\bc{{\mathbf c}}
+\def\bC{{\mathbf C}}
+\def\bp{{\mathbf p}}
+\def\bu{{\mathbf u}}
+\def\bU{{\mathbf U}}
+\def\bw{{\mathbf w}}
+\def\bW{{\mathbf W}}
+\def\bx{{\mathbf x}}
+\def\bX{{\mathbf X}}
+\def\by{{\mathbf y}}
+\def\bY{{\mathbf Y}}
+\def\bz{{\mathbf z}}
+\def\bZ{{\mathbf Z}}
+\def\bS{{\mathbf S}}
+\def\bzero{{\mathbf 0}}
+
+\def\whT{\widehat{\Theta}}
+\def\te{\widetilde{e}}
+\def\te{\widetilde{\epsilon}}
+\def\tp{\widetilde{p}}
+\def\tv{\widetilde{v}}
+\def\tmu{\widetilde{\mu}}
+\def\tsigma{\widetilde{\sigma}}
+
+
+\renewcommand\footnoterule{\kern-3pt \hrule \textwidth 2in \kern 2.6pt}
+
+\def\colblue#1{\textcolor{blue}{#1}}
+\def\highlight#1{\underline{\textcolor{red}{#1}}}
+\def\boxit#1{\vbox{\hrule\hbox{\vrule\kern6pt \vbox{\kern6pt \textcolor{blue}{#1}\kern6pt}\kern6pt\vrule}\hrule}}
+\def\rjccomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{black}\bf#1} {\color{blue}\bf -- RJC\vskip 2mm}}\vskip 2mm}
+\def\ascomment#1{\vskip 2mm\boxit{\vskip 2mm{\color{blue}\bf#1} {\color{black}\bf -- Abhra\vskip 2mm}}\vskip 2mm}
+
+\def\authorfootnote#1{{\let\thefootnote\relax\footnotetext{#1}}}
+
+
+\begin{document}
+
+Consider $W_{ij} = Z_i \trans \beta + X_i + U_{ij}$. where $i = 1, \ldots, n$ and $j = 1, \ldots, m_j$. Assume:
+\begin{itemize}
+	\item $Z_i \sim N(\mu_z, \sigma^2_z \mathbb{I})$
+	\item $U_{ij} \sim N \{ 0, \sigma_U^2(Z_i) \} $ where $\sigma^2(\cdot)$ is an unknown smooth function
+	\item  $Cor(U_{ij}, U_{ik}) = 0$ for all $j \neq k$ (I think this assumption is reasonable)  
+	\item $X_i \sim N(0, \sigma^2_x)$
+\end{itemize} 
+
+We have 
+\be \label{eq:variance_decomp}
+Var(W_{ij}) = \beta\trans \sigma_z \beta + \sigma^2_x + \sigma^2_u(Z_i) + \beta \trans \Sigma_{ZU} \beta + \beta \trans \Sigma_{ZX} \beta.
+\ee
+If we can estimate all the other components, we can solve for $\wh \sigma^2_x$. If X and Z are uncorrelated, we have one less term to worry about since $\Sigma_{ZX}$ = 0. This seems like a reasonable assumption to me. Is it possible to assume $\Sigma_{ZU} = 0$? I don't think Z and U can be independent if the variance of U is a function of Z.
+
+Consider the replication differences, $W_{ij} - W_{ik} = U_{ij} - U_{ik}$, and note $Var(W_{ij} - W_{ik}) = Var(U_{ij}) + Var(U_{ik}) - 2Cor(U_{ij}, U_{ij}) = Var(U_{ij}) + Var(U_{ik}) = 2\sigma^2(Z_i)$. Then $1 / \sqrt{2} (W_{ij} - W_{ik}) \sim N\{0, \sigma(Z_i)\}$ Now consider all permutations of the replication differences, the set  $\{W_{ij} - W_{ik} | k \neq j\}$.  This gives us $m_j(m_j-1)$ observations for each $Z_i$ to model the variance function, $\sigma^2_U(Z_i)$.  Denote these differences as $D_{i \ell}$, for $\ell = 1, \dots, m_j(m_j-1)$ and $i = 1, \dots, n$.
+
+\cite{ruppert1998}  wrote a paper about variance estimation, and I'm stealing their general idea. I doubt the asymptotics hold. The paper is technical and I haven't gone through it in detail. I think we can use his  idea though.  You and Marie Davidian wrote a similar, though less general, paper: \cite{Davidian1987}
+
+Make a new dataset. The responses variables is $D_{i \ell}$ and the explanatory variables are $Z_i$. This means we have to repeat each $Z_i$ so there is a $Z_i$ for each $D_{i \ell}$. So our new data is $\{ (D_{11}, Z_1), (D_{12}, Z_1), \dots D_{1 m_1(m_1 - 1) }, Z_1), (D_{21}, Z_1), \dots ,(D_{n  m_n (m_n-1) }, Z_n) \}$. This notation is a mess, sorry.
+
+Regress $D_{i \ell} = m(Z_i) + \epsilon_i$ where $m(\cdot)$ is a specified or unspecified mean function which should hopefully be  estimated very close to 0 and $\epsilon_i$ are iid $N\{0, \sigma^2(Z_i)\}$. Take the residuals $r_i$ and regression them against $Z_i$ to get $\wh \sigma^2(\cdot)$. That is $r_i = \sigma^2(Z_i) + \epsilon_i $. I think this will work with $Var(U_{ij}) = \sigma^2(X_i, Z_i)$ as well. We can fit $\wh \sigma^2(\cdot)$ with multivariate spline model.
+
+\underline{\textbf{The good}}: I am actually able to get a decent estimate of $\sigma^2_x.$ I am able to get reasonable estimates of $\wh \sigma^2(\cdot)$, though there are problems at the tails of the data. We can estimate everything else in (\ref{eq:variance_decomp}) with sample variance or covariance.  All our estimates are $\sqrt{n}$ consistent except $\wh \sigma^2(\cdot)$, though we can get $\sqrt{n}$ consistency if we use a parametric model
+
+\underline{\textbf{The bad}}: The feels very ad-hoc. \textit{Maybe} we can see this analogous to calculating the reliability ratio for regression coefficients. I think we'll have a hard time developing any theory for this method, except demonstrating consistency. I have no idea how to include uncertainty in the estimate of $\sigma^2_x$
+
+\underline{\textbf{Next?}}: Maybe you have a different idea for how to solve this. Maybe a likelihood based method?
+
+
+\bibliographystyle{biomAbhra}
+\bibliography{Template_References}
+	
+\end{document}
+
+
+
