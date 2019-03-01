@@ -311,8 +311,6 @@ Consider the replication differences, $W_{ij} - W_{ik} = U_{ij} - U_{ik}$, and n
 
 \cite{ruppert1998}  wrote a paper about variance estimation, and I'm stealing their general idea. I doubt the asymptotics hold. The paper is technical and I haven't gone through it in detail. I think we can use his  idea though.  You and Marie Davidian wrote a similar, though less general, paper: \cite{Davidian1987}
 
-Make a new dataset. The responses variables is $D_{i \ell}$ and the explanatory variables are $Z_i$. This means we have to repeat each $Z_i$ so there is a $Z_i$ for each $D_{i \ell}$. So our new data is $\{ (D_{11}, Z_1), (D_{12}, Z_1), \dots D_{1 m_1(m_1 - 1) }, Z_1), (D_{21}, Z_1), \dots ,(D_{n  m_n (m_n-1) }, Z_n) \}$. This notation is a mess, sorry.
-
 Regress $D_{i \ell} = m(Z_i) + \epsilon_i$ where $m(\cdot)$ is a specified or unspecified mean function which should hopefully be  estimated very close to 0 and $\epsilon_i$ are iid $N\{0, \sigma^2(Z_i)\}$. Take the residuals $r_i$ and regression them against $Z_i$ to get $\wh \sigma^2(\cdot)$. That is $r_i = \sigma^2(Z_i) + \epsilon_i $. I think this will work with $Var(U_{ij}) = \sigma^2(X_i, Z_i)$ as well. We can fit $\wh \sigma^2(\cdot)$ with multivariate spline model.
 
 \underline{\textbf{The good}}: I am actually able to get a decent estimate of $\sigma^2_x.$ I am able to get reasonable estimates of $\wh \sigma^2(\cdot)$, though there are problems at the tails of the data. We can estimate everything else in (\ref{eq:variance_decomp}) with sample variance or covariance.  All our estimates are $\sqrt{n}$ consistent except $\wh \sigma^2(\cdot)$, though we can get $\sqrt{n}$ consistency if we use a parametric model
@@ -320,6 +318,14 @@ Regress $D_{i \ell} = m(Z_i) + \epsilon_i$ where $m(\cdot)$ is a specified or un
 \underline{\textbf{The bad}}: The feels very ad-hoc. \textit{Maybe} we can see this analogous to calculating the reliability ratio for regression coefficients. I think we'll have a hard time developing any theory for this method, except demonstrating consistency. I have no idea how to include uncertainty in the estimate of $\sigma^2_x$
 
 \underline{\textbf{Next?}}: Maybe you have a different idea for how to solve this. Maybe a likelihood based method?
+
+
+\section{Illustrate Point}
+What if we maximize the sum of squares and find the worst fitting line?
+
+\bse
+max(\bbeta) \; \; \vert \vert Y - \bbeta X \vert \vert
+\ese
 
 
 \bibliographystyle{biomAbhra}
