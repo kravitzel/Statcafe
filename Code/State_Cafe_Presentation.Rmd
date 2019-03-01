@@ -1,5 +1,6 @@
 ---
-title: "StatCafe"
+title: "Organizing Your Research Workflow with Rstudio"
+subtitle: "A Practical Guide to Save You From Hating Yourself Later"
 author: "Eli Kravitz"
 date: "2/28/2019"
 output:
@@ -9,6 +10,7 @@ output:
     keep_tex: yes
     slide_level: 3
     theme: metropolis
+urlcolor: blue
 ---
 
 ```{r setup, include=FALSE}
@@ -16,9 +18,17 @@ knitr::opts_chunk$set(echo = FALSE)
 library("here")
 ```
 
+### Philosphy
+
+> "Always code as if the person who ends up maintaining your code is a violent psychopath who knows where you live." - CodeForTheMaintainer
+
+* Usually this person will be you, so they will at least know where you live.
+
+
+
 ### Introduction
 
-* I will give an \alert{opinionated} way for you to manage your research workflow in R.
+* I will give an \alert{opinionated} way for you to manage your research workflow in Rsudio.
   - I've learned this through trial and error... mostly error.
 
 * Take parts of this you like, ignore parts you don't
@@ -35,7 +45,7 @@ library("here")
   
 * __Scenarios 2__: You have a simulation working perfectly. You make a lot of changes. \alert{A few days later} you can't remember why you made these changes, and now \alert{your simulation does not work correctly}.
 
-* __Scenarios 3__: You decide to rewrite most of the paper, show it to your advisor, and they tell you it was better before.
+* __Scenarios 3__: You decide to rewrite most of the paper, show it to your adviser, and they tell you it was better before.
   - You only have the old draft of the paper in PDF. You DO NOT want to retype it.
   
 ### Storing Everything: Rprojects
@@ -139,6 +149,163 @@ my_data = here("Data", "my_file.csv")
    
 * Point-and-click integration
 
-### Reproducable parallel: DoRNG
+* Use this and make your life easier
 
+### Make your presentations in Rstudio
+
+* What else can we do in Rstudio? \alert{Presentations} in Rmarkdown
+
+* Beamer is the worst. Does anyone find this intuitive? 
+```{r echo = TRUE, eval=FALSE}
+\begin{itemize}
+\item
+  I organize all my research projects the same way.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Show folder structure
+  \end{itemize}
+\item
+  Make the directory a Rproject.
+\item
+  R projects let you:
+```
+
+### Make your presentations in Rstudio
+
+* Look at how much more readable this is:
+
+```{r echo = TRUE, eval=FALSE}
+### Slide Title
+
+* Bullet
+  - Sub bullet
+  
+* Bullet
+
+```
+
+### Make your presentations in Rstudio
+
+* Compare tables
+
+* Latex:
+```{r echo = TRUE, eval=FALSE}
+\begin{table}
+\begin{center}
+  \begin{tabular}{ | l | c | r }
+    \hline
+    1 & 2 & 3 \\ \hline
+    4 & 5 & 6 \\ \hline
+    7 & 8 & 9 \\
+    \hline
+  \end{tabular}
+\end{center}
+\end{table}
+```
+
+### Make your presentations in Rstudio
+
+* Rmarkdown:
+
+```{r eval = F, echo=TRUE}
+Table Header  | Second Header | Third Header
+------------- | -------------- -------------
+Table Cell    | Cell 2        |  Cell 3  
+Cell 4        | Cell 45       |  Cell 6 
+```
+
+### Make your presentations in Rstudio
+
+* You can create .tex files too. Just add to beginning of Rmarkdown
+
+```{r eval = FALSE, echo = TRUE}
+output:
+  beamer_presentation:
+    includes:
+    keep_tex: yes
+```
+
+### DoRNG and Reproducability
+
+* Many of you will need to do parallel computing for your research.
+
+* Setting seeds is tricky
+
+* Draw two examples on board
+
+### DoRNG and Reproducability
+
+* Fix this with DoParallel and DoRNG
+
+* Automatically changes RNG type, feeds correct RNG to workers
+
+* Saves the \alert{seeds as attribute}.
+  - You can recreate these results!
+  
+ 
+### DoRNG and Reproducability
+ 
+ * So easy, no reason not to do this
+ 
+ * Setup:
+```{r eval = F, echo = TRUE}
+library("parallel"); library("doParallel"); library("doRNG")
+cl = makeForkCluster(nnodes = detectCores()-1)
+registerDoParallel(cl)
+registerDoRNG(seed = 123)
+```
+ 
+### DoRNG and Reproducability
+
+* Running reproducable parallel computing (easy too!)
+```{r eval = F, echo = TRUE}
+results = foreach(i = 1:Nsim) %dorng% {
+  thing_I_want_in_parallel()
+}
+```
+
+* Saves seed as attribute:
+
+```{r echo = FALSE, message=FALSE, warning=FALSE, message=FALSE}
+library("parallel"); library("doParallel"); library("doRNG")
+cl = makeForkCluster(nnodes = detectCores()-1)
+registerDoParallel(cl)
+results = foreach(i = 1:2) %dorng% {
+  rnorm(3)
+}
+```
+
+```{r eval = TRUE, echo = TRUE}
+attr(results, which = "rng")
+```
+
+
+### Resources
+
+* I did not go over anything in detail, why anything works
+
+* I wanted to demonstrate *why* you want to use these tools
+
+* Next slides have resources for implementing all of this. They can teach you better than I can.
+
+
+
+### Resources
+
+* [Rprojects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+
+* [Github](https://guides.github.com/activities/hello-world/)
+
+* [Github and Rstudio](https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html)
+
+* [Here function](https://github.com/jennybc/here_here)
+
+### Resources
+
+* [Presentations in Rmarkdown](http://svmiller.com/blog/2015/02/moving-from-beamer-to-r-markdown/)
+   - I really, really like this website
+   
+* [Reproducable Parallel](https://cran.r-project.org/web/packages/doRNG/vignettes/doRNG.pdf)
 

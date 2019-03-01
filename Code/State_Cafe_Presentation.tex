@@ -1,5 +1,6 @@
 \PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
 \PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
 \documentclass[ignorenonframetext,]{beamer}
 \setbeamertemplate{caption}[numbered]
@@ -32,11 +33,15 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
 }
+\usepackage{xcolor}
 \usepackage{hyperref}
 \hypersetup{
-            pdftitle={StatCafe},
+            pdftitle={Organizing Your Research Workflow with Rstudio},
             pdfauthor={Eli Kravitz},
-            pdfborder={0 0 0},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=Blue,
+            urlcolor=blue,
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
 \newif\ifbibliography
@@ -421,12 +426,31 @@
 \setbeamercolor{alerted text}{fg=blue}
 \setbeamerfont{alerted text}{series=\bfseries}
 
-\title{StatCafe}
+\title{Organizing Your Research Workflow with Rstudio}
+\providecommand{\subtitle}[1]{}
+\subtitle{A Practical Guide to Save You From Hating Yourself Later}
 \author{Eli Kravitz}
 \date{2/28/2019}
 
 \begin{document}
 \frame{\titlepage}
+
+\begin{frame}{Philosphy}
+\protect\hypertarget{philosphy}{}
+
+\begin{quote}
+“Always code as if the person who ends up maintaining your code is a
+violent psychopath who knows where you live.” - CodeForTheMaintainer
+\end{quote}
+
+\begin{itemize}
+\tightlist
+\item
+  Usually this person will be you, so they will at least know where you
+  live.
+\end{itemize}
+
+\end{frame}
 
 \begin{frame}{Introduction}
 \protect\hypertarget{introduction}{}
@@ -434,7 +458,7 @@
 \begin{itemize}
 \item
   I will give an \alert{opinionated} way for you to manage your research
-  workflow in R.
+  workflow in Rsudio.
 
   \begin{itemize}
   \tightlist
@@ -476,7 +500,7 @@
   \alert{your simulation does not work correctly}.
 \item
   \textbf{Scenarios 3}: You decide to rewrite most of the paper, show it
-  to your advisor, and they tell you it was better before.
+  to your adviser, and they tell you it was better before.
 
   \begin{itemize}
   \tightlist
@@ -696,6 +720,297 @@
   \alert{revert back to an earlier}. version.
 \item
   Works with .tex too!
+\item
+  Show example on Github (code and .tex)
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Saving Progress with Github}
+\protect\hypertarget{saving-progress-with-github-3}{}
+
+\begin{itemize}
+\item
+  Github integrates really well with Rstudio
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Comes pre-installed on current version of Rstudio
+  \end{itemize}
+\item
+  Point-and-click integration
+\item
+  Use this and make your life easier
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{Make your presentations in Rstudio}
+\protect\hypertarget{make-your-presentations-in-rstudio}{}
+
+\begin{itemize}
+\item
+  What else can we do in Rstudio? \alert{Presentations} in Rmarkdown
+\item
+  Beamer is the worst. Does anyone find this intuitive?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}begin\{itemize\}}
+\NormalTok{\textbackslash{}item}
+\NormalTok{  I organize all my research projects the same way.}
+
+\NormalTok{  \textbackslash{}begin\{itemize\}}
+\NormalTok{  \textbackslash{}tightlist}
+\NormalTok{  \textbackslash{}item}
+\NormalTok{    Show folder structure}
+\NormalTok{  \textbackslash{}end\{itemize\}}
+\NormalTok{\textbackslash{}item}
+\NormalTok{  Make the directory a Rproject.}
+\NormalTok{\textbackslash{}item}
+\NormalTok{  R projects let you}\OperatorTok{:}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Make your presentations in Rstudio}
+\protect\hypertarget{make-your-presentations-in-rstudio-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Look at how much more readable this is:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{### Slide Title}
+
+\OperatorTok{*}\StringTok{ }\NormalTok{Bullet}
+  \OperatorTok{-}\StringTok{ }\NormalTok{Sub bullet}
+  
+\OperatorTok{*}\StringTok{ }\NormalTok{Bullet}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Make your presentations in Rstudio}
+\protect\hypertarget{make-your-presentations-in-rstudio-2}{}
+
+\begin{itemize}
+\item
+  Compare tables
+\item
+  Latex:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\textbackslash{}begin\{table\}}
+\NormalTok{\textbackslash{}begin\{center\}}
+\NormalTok{  \textbackslash{}begin\{tabular\}\{ }\OperatorTok{|}\StringTok{ }\NormalTok{l }\OperatorTok{|}\StringTok{ }\NormalTok{c }\OperatorTok{|}\StringTok{ }\NormalTok{r \}}
+\NormalTok{    \textbackslash{}hline}
+    \DecValTok{1} \OperatorTok{&}\StringTok{ }\DecValTok{2} \OperatorTok{&}\StringTok{ }\DecValTok{3}\NormalTok{ \textbackslash{}\textbackslash{} \textbackslash{}hline}
+    \DecValTok{4} \OperatorTok{&}\StringTok{ }\DecValTok{5} \OperatorTok{&}\StringTok{ }\DecValTok{6}\NormalTok{ \textbackslash{}\textbackslash{} \textbackslash{}hline}
+    \DecValTok{7} \OperatorTok{&}\StringTok{ }\DecValTok{8} \OperatorTok{&}\StringTok{ }\DecValTok{9}\NormalTok{ \textbackslash{}\textbackslash{}}
+\NormalTok{    \textbackslash{}hline}
+\NormalTok{  \textbackslash{}end\{tabular\}}
+\NormalTok{\textbackslash{}end\{center\}}
+\NormalTok{\textbackslash{}end\{table\}}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Make your presentations in Rstudio}
+\protect\hypertarget{make-your-presentations-in-rstudio-3}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Rmarkdown:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Table Header  }\OperatorTok{|}\StringTok{ }\NormalTok{Second Header }\OperatorTok{|}\StringTok{ }\NormalTok{Third Header}
+\OperatorTok{-------------}\StringTok{ }\ErrorTok{|}\StringTok{ }\OperatorTok{--------------}\StringTok{ }\OperatorTok{-------------}
+\NormalTok{Table Cell    }\OperatorTok{|}\StringTok{ }\NormalTok{Cell }\DecValTok{2}        \OperatorTok{|}\StringTok{  }\NormalTok{Cell }\DecValTok{3}  
+\NormalTok{Cell }\DecValTok{4}        \OperatorTok{|}\StringTok{ }\NormalTok{Cell }\DecValTok{45}       \OperatorTok{|}\StringTok{  }\NormalTok{Cell }\DecValTok{6} 
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{Make your presentations in Rstudio}
+\protect\hypertarget{make-your-presentations-in-rstudio-4}{}
+
+\begin{itemize}
+\tightlist
+\item
+  You can create .tex files too. Just add to beginning of Rmarkdown
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output}\OperatorTok{:}
+\StringTok{  }\NormalTok{beamer_presentation}\OperatorTok{:}
+\StringTok{    }\NormalTok{includes}\OperatorTok{:}
+\StringTok{    }\NormalTok{keep_tex}\OperatorTok{:}\StringTok{ }\NormalTok{yes}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}{DoRNG and Reproducability}
+\protect\hypertarget{dorng-and-reproducability}{}
+
+\begin{itemize}
+\item
+  Many of you will need to do parallel computing for your research.
+\item
+  Setting seeds is tricky
+\item
+  Draw two examples on board
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{DoRNG and Reproducability}
+\protect\hypertarget{dorng-and-reproducability-1}{}
+
+\begin{itemize}
+\item
+  Fix this with DoParallel and DoRNG
+\item
+  Automatically changes RNG type, feeds correct RNG to workers
+\item
+  Saves the \alert{seeds as attribute}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    You can recreate these results!
+  \end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]{DoRNG and Reproducability}
+\protect\hypertarget{dorng-and-reproducability-2}{}
+
+\begin{itemize}
+\item
+  So easy, no reason not to do this
+\item
+  Setup:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(}\StringTok{"parallel"}\NormalTok{); }\KeywordTok{library}\NormalTok{(}\StringTok{"doParallel"}\NormalTok{); }\KeywordTok{library}\NormalTok{(}\StringTok{"doRNG"}\NormalTok{)}
+\NormalTok{cl =}\StringTok{ }\KeywordTok{makeForkCluster}\NormalTok{(}\DataTypeTok{nnodes =} \KeywordTok{detectCores}\NormalTok{()}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
+\KeywordTok{registerDoParallel}\NormalTok{(cl)}
+\KeywordTok{registerDoRNG}\NormalTok{(}\DataTypeTok{seed =} \DecValTok{123}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\end{frame}
+
+\begin{frame}[fragile]{DoRNG and Reproducability}
+\protect\hypertarget{dorng-and-reproducability-3}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Running reproducable parallel computing (easy too!)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{results =}\StringTok{ }\KeywordTok{foreach}\NormalTok{(}\DataTypeTok{i =} \DecValTok{1}\OperatorTok{:}\NormalTok{Nsim) }\OperatorTok{%dorng%}\StringTok{ }\NormalTok{\{}
+  \KeywordTok{thing_I_want_in_parallel}\NormalTok{()}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Saves seed as attribute:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{attr}\NormalTok{(results, }\DataTypeTok{which =} \StringTok{"rng"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1]        407  -27852831  378164270 1731837655 1455799596 1142929469
+## [7] -503406118
+## 
+## [[2]]
+## [1]         407 -1624416098 -1643081275 -1182147142  1186550950  -127368612
+## [7]  2015053164
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}{Resources}
+\protect\hypertarget{resources}{}
+
+\begin{itemize}
+\item
+  I did not go over anything in detail, why anything works
+\item
+  I wanted to demonstrate \emph{why} you want to use these tools
+\item
+  Next slides have resources for implementing all of this. They can
+  teach you better than I can.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Resources}
+\protect\hypertarget{resources-1}{}
+
+\begin{itemize}
+\item
+  \href{https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects}{Rprojects}
+\item
+  \href{https://guides.github.com/activities/hello-world/}{Github}
+\item
+  \href{https://jennybc.github.io/2014-05-12-ubc/ubc-r/session03_git.html}{Github
+  and Rstudio}
+\item
+  \href{https://github.com/jennybc/here_here}{Here function}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Resources}
+\protect\hypertarget{resources-2}{}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{http://svmiller.com/blog/2015/02/moving-from-beamer-to-r-markdown/}{Presentations
+  in Rmarkdown}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I really, really like this website
+  \end{itemize}
+\item
+  \href{https://cran.r-project.org/web/packages/doRNG/vignettes/doRNG.pdf}{Reproducable
+  Parallel}
 \end{itemize}
 
 \end{frame}

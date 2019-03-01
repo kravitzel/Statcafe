@@ -2,3 +2,14 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# Don't sync pdf's in Related Papers
+Related Papers/
+
+# Don't sync data
+Data/
+
+# Ignore extra LaTex files
+*.aux
+*.bbl
+*.log
